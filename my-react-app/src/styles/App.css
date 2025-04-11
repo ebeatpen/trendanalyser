@@ -204,7 +204,7 @@ body {
 .sankey-legend {
   margin-top: var(--spacing-lg);
   padding: 15px;
-  background-color: var(--light-bg);
+  background-color: white;
   border-radius: var(--border-radius-md);
 }
 
@@ -216,7 +216,12 @@ body {
 .legend-items {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   gap: var(--spacing-sm);
+}
+.outer-sanky {
+  display: flex;
+
 }
 
 .legend-item {
@@ -395,4 +400,35 @@ tr:nth-child(even) {
   tfoot {
     display: table-footer-group;
   }
+}
+/* Add these styles to your CSS */
+.legend-item {
+  cursor: pointer;
+  padding: 6px 8px;
+  margin: 2px 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.legend-item:hover {
+  background-color: #f5f5f5;
+}
+
+.legend-item.selected {
+  background-color: #e3f2fd;
+  box-shadow: 0 0 0 1px #bbdefb;
+}
+
+.color-box {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.legend-text {
+  font-size: 13px;
 }
