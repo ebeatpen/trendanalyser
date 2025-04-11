@@ -432,3 +432,6 @@ tr:nth-child(even) {
 .legend-text {
   font-size: 13px;
 }
+.js-plotly-plot {
+  border: none !important;
+}

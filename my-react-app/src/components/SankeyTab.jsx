@@ -35,6 +35,10 @@ function SankeyTab({ fullData, yearList }) {
     }
   };
 
+  const resetHighlight = () => {
+    setSelectedPath(null);
+  };
+
   const updateSankeyHighlight = () => {
     if (!sankeyDataRef.current || !sankeyRef.current) return;
 
@@ -151,7 +155,7 @@ function SankeyTab({ fullData, yearList }) {
 
         const textSpan = document.createElement("span");
         textSpan.className = "legend-text";
-        textSpan.textContent = `Group (${group.groupId.split("-").join(" → ")  }): ${group.count} ACs`;
+        textSpan.textContent = `Path (${group.groupId.split("-").join(" → ")}): ${group.count} ACs`;
 
         legendItem.append(colorBox, textSpan);
         legendElement.append(legendItem);
@@ -179,10 +183,19 @@ function SankeyTab({ fullData, yearList }) {
         <div id="sankeyDiagram" ref={sankeyRef} />
         
         <div className="sankey-legend">
-          <div className="legend-title">Trend Groups Legend (click to highlight):</div>
+          <div className="legend-header">
+            <div className="legend-title">Trend Groups Legend</div>
+            <button 
+              onClick={resetHighlight}
+              className="reset-button"
+              disabled={!selectedPath}
+            >
+              Reset Highlight
+            </button>
+          </div>
           <div id="legendItems" className="legend-items" />
-          </div>
-          </div>
+        </div>
+        </div>
       </div>
     </div>
   );
